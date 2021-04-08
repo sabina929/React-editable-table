@@ -8,19 +8,18 @@ import EditableTableCell from './EditableTableCell'
 
 function App() {
   // let copyOfData = data.slice()
-  const [employees, setEmployees] = useState(data)
-  // const [deletedEmployees, setDeletedEmployees] = useState([])
+  let copyOfData = [...data]
+  const [employees, setEmployees] = useState([...copyOfData])
+  const [deletedEmployees, setDeletedEmployees] = useState([])
   const [isModalOpened, setIsModalOpened] = useState(false)
 
-  const deleteEmployee = (id) =>{
+  const deleteEmployee = (inputId) =>{
     let tempEmployees = [...employees];
-    // const deletedEmployee = employees.find(employee=> employee.id ===id)
-    // const filteredEmployees = employees.filter(employee=> employee.id !==id)
-
-    // setDeletedEmployees(filteredEmployees)
+    // const deletedEmployee = employees.find(employee=> employee.inputId ===inputId)
+   
 
     const mappedEmployees = tempEmployees.map(employee => {
-      if(employee.id === id){
+      if(employee.inputId === inputId){
         if(employee.isDeleted){
           employee.isDeleted = false;
         }
@@ -30,10 +29,11 @@ function App() {
       }
       return employee
     })
+    const filteredEmployees = mappedEmployees.filter(employee=> employee.isDeleted !==true)
 
-    console.log(mappedEmployees)
-    
-
+    setDeletedEmployees(filteredEmployees)
+    // console.log(mappedEmployees)
+    // console.log(filteredEmployees)
     setEmployees(mappedEmployees)
     
   }
@@ -66,13 +66,16 @@ function App() {
       return employee;
     });
     setEmployees(newEmployees);
-    console.log(employees);
+    // console.log(employees);
   };
 
 
+  // useEffect(() => {
+  //   console.log(data)
+  // })
   useEffect(() => {
-    console.log(data)
-  })
+    console.log(deletedEmployees)
+  },[deletedEmployees])
   return (
     <main>
       <section className="container">
@@ -143,7 +146,7 @@ function App() {
                                 <td className={`status ${isDeleted ? 'deleted' : 'not-deleted'}`}><span>{isDeleted ? 'deleted' : '.............'}</span></td>
                                 <td>
                                   {
-                                    isDeleted ? <i className="fas fa-trash-restore" onClick={()=>deleteEmployee(id)}></i> : <i className="fas fa-trash" onClick={()=>deleteEmployee(id)}/>
+                                    isDeleted ? <i className="fas fa-trash-restore" onClick={()=>deleteEmployee(inputId)}></i> : <i className="fas fa-trash" onClick={()=>deleteEmployee(inputId)}/>
                                   }
                                    
                                 </td>
