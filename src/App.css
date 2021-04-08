@@ -24,7 +24,7 @@ article.table-container {
 }
 table#employees{
   background-color: #ffffff;
-  width: 80vw;
+  width: 86vw;
   border-radius: 6px;
   border-style: hidden; 
   box-shadow: 0 10px 24px 3px rgba(15, 34, 205, 0.2);
@@ -41,6 +41,18 @@ table#employees th {
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
 }
+
+
+/* table#employees th:not(:first-child){
+  padding: 20px 20px 20px 0px;
+}
+table#employees th:last-child{
+  padding: 20px 20px 20px 20px;
+}
+table#employees th:first-child{
+  padding: 20px 0px 20px 20px;
+} */
+
 table tr:first-child th:first-child {
   border-top-left-radius: 6px;
 }
@@ -60,25 +72,84 @@ table tr:not(:last-child) td {
   border-bottom: 1px solid hsl(204, 42%, 84%);
 }
 table tr td{
-  padding: 20px;
+  padding: 0px 20px;
   text-align: left;
   color: #74777A;
   font-family: Roboto, sans-serif;
   font-weight: 500;
+  height: 60px;
 }
 
-table tr.status.deleted{
-  
-  background-color: #fa64751e;
-  
+/* table tr td:not(:first-child){
+  padding: 0px 20px 0px 0px;
 }
-table tr.status.deleted td{
+table tr td:last-child{
+  padding: 0px 20px 0px 20px;
+}
+table tr td:first-child{
+  padding: 0px 0px 0px 20px;
+} */
+
+table tr td:nth-child(1){
+  width: 200px;
+}
+table tr td:nth-child(2){
+  width: 140px;
+}
+table tr td:nth-child(3){
+  width: 160px;
+}
+table tr td:nth-child(4){
+  width: 160px;
+}
+table tr td:nth-child(5){
+  width: 280px;
+}
+table tr td:nth-child(6){
+  width: 180px;
+}
+
+table tr.status.not-deleted span{
+  background-color: #ffffff;
+  color: #ffffff;
+  padding: 8px;
+  border-radius: 5px;
+  width: 69.23px;
+  height: 35px;
+}
+table tr.status.deleted span{
+  background-color: #fa64751e;
   color: #FA6476;
+  padding: 8px;
+  border-radius: 5px;
 }
 
 table tr td i {
   cursor: pointer;
 }
+table tr td input {
+  height: 100%;
+  width: 100%;
+  border: none;
+  outline: none;
+  text-align: left;
+  color: #74777A;
+  font-family: Roboto, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  transition: all .3s ease;
+}
+
+table tr td input:focus{
+  outline: none;
+  /* border: 1.5px solid rgba(15, 34, 205, 1); */
+  box-shadow: inset 0 0 0 1.6px rgba(15, 34, 205, 1);
+  padding-left: 6px;
+  border-radius: 6px;
+  background-color: rgba(15, 34, 205, 0.03);
+  color: #0F22CD;
+}
+
 
 button{
   border: none;

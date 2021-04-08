@@ -3,6 +3,7 @@ import data from './data';
 import './App.css';
 
 import EmpoleyeesDataModal from './EmployeesDataModal.js'
+import EditableTableCell from './EditableTableCell'
 
 
 function App() {
@@ -40,6 +41,29 @@ function App() {
   const showModal = ()=> {
     setIsModalOpened(!isModalOpened)
   }
+
+  const handleProductTable = (evt) => {
+    let item = {
+      id: evt.target.id,
+      name: evt.target.name,
+      value: evt.target.value
+    };
+    let copyOfEmployees = employees.slice();
+
+    let newEmployees = copyOfEmployees.map(employee=> {
+      for (let key in employee) {
+          if (key === item.name && employee.id === item.id) {
+            employee[key] = item.value;
+
+          }
+      }
+      return employee;
+    });
+    setEmployees(newEmployees);
+    console.log(employees);
+  };
+
+
   useEffect(() => {
     console.log(data)
   })
@@ -62,24 +86,55 @@ function App() {
                     <th>Date of birth</th>
                     <th>Position</th>
                     <th>Phone number</th>
-                    {/* <th>Status</th> */}
+                    <th>Status</th>
                     <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
                 {
-                        employees.map((item) => 
+                        employees.map((employee) => 
                           {
-                            const {id, name, surname, dateOfBirth, position, phoneNumber, isDeleted} = item
+                            const {id, name, surname, dateOfBirth, position, phoneNumber, isDeleted} = employee
                             // console.log(id, name, surname, dateOfBirth, position, phoneNumber, isDeleted)
                             return(
                               <tr key={id} className={`status ${isDeleted ? 'deleted' : 'not-deleted'}`}>
-                                <td>{id}</td>
+                                {/* <td>{id}</td>
                                 <td>{name}</td>
                                 <td>{surname}</td>
-                                <td>{dateOfBirth}</td>
-                                <td>{position}</td>
-                                <td>{phoneNumber}</td>
+                                <td>{dateOfBirth}</td> */}
+                                {/* <td>{position}</td> */}
+                                {/* <td>{phoneNumber}</td> */}
+                                <EditableTableCell onProductTableUpdate={handleProductTable} cellData={{
+                                  "type": "id",
+                                  value: id,
+                                  id: id
+                                }}/>
+                                <EditableTableCell onProductTableUpdate={handleProductTable} cellData={{
+                                  "type": "name",
+                                  value: name,
+                                  id: id
+                                }}/>
+                                <EditableTableCell onProductTableUpdate={handleProductTable} cellData={{
+                                  "type": "surname",
+                                  value: surname,
+                                  id: id
+                                }}/>
+                                <EditableTableCell onProductTableUpdate={handleProductTable} cellData={{
+                                  "type": "dateOfBirth",
+                                  value: dateOfBirth,
+                                  id: id
+                                }}/>
+                                <EditableTableCell onProductTableUpdate={handleProductTable} cellData={{
+                                  "type": "position",
+                                  value: position,
+                                  id: id
+                                }}/>
+                                <EditableTableCell onProductTableUpdate={handleProductTable} cellData={{
+                                  "type": "phoneNumber",
+                                  value: phoneNumber,
+                                  id: id
+                                }}/>
+                                <td className={`status ${isDeleted ? 'deleted' : 'not-deleted'}`}><span>{isDeleted ? 'deleted' : '.............'}</span></td>
                                 <td>
                                   {
                                     isDeleted ? <i className="fas fa-trash-restore" onClick={()=>deleteEmployee(id)}></i> : <i className="fas fa-trash" onClick={()=>deleteEmployee(id)}/>
