@@ -7,6 +7,7 @@ const employeesData = [
       position: 'Software engineer',
       phoneNumber: '+994512548575',
       isDeleted: false,
+      isUpdated: false,
       inputId: '001DBHX02ABC2'
     },
     {
@@ -17,6 +18,7 @@ const employeesData = [
         position: 'Software engineer',
         phoneNumber: '+994705246838',
         isDeleted: false,
+        isUpdated: false,
         inputId: '002JBHX02AJCC2'
     },
     {
@@ -27,6 +29,7 @@ const employeesData = [
         position: 'Tech lead',
         phoneNumber: '+994558425123',
         isDeleted: false,
+        isUpdated: false,
         inputId: '003TABJC02ABC2'
     },
     {
@@ -37,6 +40,7 @@ const employeesData = [
         position: 'Software developer',
         phoneNumber: '+994558547525',
         isDeleted: false,
+        isUpdated: false,
         inputId: '004FEVB5ASIEC2'
     },
     {
@@ -47,6 +51,7 @@ const employeesData = [
         position: 'Java developer',
         phoneNumber: '+994515768842',
         isDeleted: false,
+        isUpdated: false,
         inputId: '005FEVB5MNTJ2'
     },
     {
@@ -57,6 +62,7 @@ const employeesData = [
         position: 'Cyber securty specialist',
         phoneNumber: '+994552413996',
         isDeleted: false,
+        isUpdated: false,
         inputId: '006FEVB5JJHLA2'
     },
     {
@@ -67,6 +73,7 @@ const employeesData = [
         position: 'UI/UX designer',
         phoneNumber: '+994515224887',
         isDeleted: false,
+        isUpdated: false,
         inputId: '007FEVB5RABQ2'
     },
     {
@@ -77,6 +84,7 @@ const employeesData = [
         position: 'Front-end developer',
         phoneNumber: '+994518562468',
         isDeleted: false,
+        isUpdated: false,
         inputId: '008FEVB5JRUIK2'
     },
     {
@@ -87,6 +95,7 @@ const employeesData = [
       position: 'Back-end developer',
       phoneNumber: '+994704521585',
       isDeleted: false,
+      isUpdated: false,
       inputId: '009FEVB5XDUA2'
     },
     {
@@ -97,6 +106,7 @@ const employeesData = [
       position: 'Data analyst',
       phoneNumber: '+994507428682',
       isDeleted: false,
+      isUpdated: false,
       inputId: '0010DEVB5GTYI2'
     }
   ];

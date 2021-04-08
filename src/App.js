@@ -1,22 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import data from './data';
 import './App.css';
 
 import EmpoleyeesDataModal from './EmployeesDataModal.js'
 import EditableTableCell from './EditableTableCell'
+import UpdatedEmployeesList from './UpdatedEmployeesList'
+import DeletedEmployeesList from './DeletedEmployeesList'
 
 
 function App() {
   // let copyOfData = data.slice()
-  let copyOfData = [...data]
+  // let copyOfData = [...data]
+  let copyOfData = JSON.parse(JSON.stringify(data))
   const [employees, setEmployees] = useState([...copyOfData])
+  // const [initalEmployees, setInitalEmployees] = useState([])
+  const [updatedEmployees, setUpdatedEmployees] = useState([])
   const [deletedEmployees, setDeletedEmployees] = useState([])
   const [isModalOpened, setIsModalOpened] = useState(false)
 
   const deleteEmployee = (inputId) =>{
     let tempEmployees = [...employees];
-    // const deletedEmployee = employees.find(employee=> employee.inputId ===inputId)
-   
 
     const mappedEmployees = tempEmployees.map(employee => {
       if(employee.inputId === inputId){
@@ -29,7 +32,7 @@ function App() {
       }
       return employee
     })
-    const filteredEmployees = mappedEmployees.filter(employee=> employee.isDeleted !==true)
+    const filteredEmployees = mappedEmployees.filter(employee=> employee.isDeleted === true)
 
     setDeletedEmployees(filteredEmployees)
     // console.log(mappedEmployees)
@@ -55,34 +58,56 @@ function App() {
       value: e.target.value
     };
     let copyOfEmployeesArr = employees.slice();
+   
 
-    let newEmployees = copyOfEmployeesArr.map(employee=> {
+    // setInitalEmployees(copyOfEmployeesArr)
+
+    let editedEmployees = copyOfEmployeesArr.map(employee=> {
       for (let key in employee) {
           if (key === item.name && employee.inputId === item.id) {
             employee[key] = item.value;
-
           }
       }
       return employee;
     });
-    setEmployees(newEmployees);
-    // console.log(employees);
+    setEmployees(editedEmployees);
+
   };
 
 
-  // useEffect(() => {
-  //   console.log(data)
-  // })
+
   useEffect(() => {
-    console.log(deletedEmployees)
-  },[deletedEmployees])
+    let copyOfDataArr = JSON.parse(JSON.stringify(data))
+    let copyOfEmployeesArr = employees.slice();    
+
+    const comparedEmloyeesArr = copyOfEmployeesArr.filter(employeeObj=>{
+      return !copyOfDataArr.some(copyEmployeeObj=>{
+        //  return isEqual(copyEmployeeObj,employeeObj)        
+        return copyEmployeeObj.id === employeeObj.id && copyEmployeeObj.name === employeeObj.name  && copyEmployeeObj.surname === employeeObj.surname && copyEmployeeObj.dateOfBirth === employeeObj.dateOfBirth && copyEmployeeObj.position === employeeObj.position && copyEmployeeObj.phoneNumber === employeeObj.phoneNumber      
+      });
+    });
+    setUpdatedEmployees(comparedEmloyeesArr)
+  
+  },[employees])
+
+
+  useEffect(() => {
+    console.log(updatedEmployees)
+  }, [updatedEmployees])
+
+
+  // useEffect(() => {
+  //   console.log(deletedEmployees)
+  // },[deletedEmployees])
   return (
     <main>
       <section className="container">
         <h1>Employees Table</h1>
         <article>
-          <div>Updated Employees</div>
-          {/* <div deletedEmployees={deletedEmployees}>Deleted Employees</div> */}
+          {/* <div>Updated Employees</div> */}
+          {/* <div>Deleted Employees</div> */}
+          <UpdatedEmployeesList employees={updatedEmployees}/>
+          <DeletedEmployeesList deletedEmployees={deletedEmployees}/>
         </article>
 
         <article className="table-container">
