@@ -7,17 +7,17 @@ import EditableTableCell from './EditableTableCell'
 
 
 function App() {
-  // let copyOfData = [...data]
+  // let copyOfData = data.slice()
   const [employees, setEmployees] = useState(data)
-  const [deletedEmployees, setDeletedEmployees] = useState([])
+  // const [deletedEmployees, setDeletedEmployees] = useState([])
   const [isModalOpened, setIsModalOpened] = useState(false)
 
   const deleteEmployee = (id) =>{
     let tempEmployees = [...employees];
     // const deletedEmployee = employees.find(employee=> employee.id ===id)
-    const filteredEmployees = employees.filter(employee=> employee.id !==id)
+    // const filteredEmployees = employees.filter(employee=> employee.id !==id)
 
-    setDeletedEmployees(filteredEmployees)
+    // setDeletedEmployees(filteredEmployees)
 
     const mappedEmployees = tempEmployees.map(employee => {
       if(employee.id === id){
@@ -42,17 +42,23 @@ function App() {
     setIsModalOpened(!isModalOpened)
   }
 
-  const handleProductTable = (evt) => {
-    let item = {
-      id: evt.target.id,
-      name: evt.target.name,
-      value: evt.target.value
-    };
-    let copyOfEmployees = employees.slice();
+  const handleEmployeeTableCell = (e) => {
 
-    let newEmployees = copyOfEmployees.map(employee=> {
+    let str = e.target.id;
+    let arr = str.split("");
+    arr.splice(str.length - 6, str.length);
+    let idStr = arr.join('');
+
+    let item = {
+      id: idStr,
+      name: e.target.name,
+      value: e.target.value
+    };
+    let copyOfEmployeesArr = employees.slice();
+
+    let newEmployees = copyOfEmployeesArr.map(employee=> {
       for (let key in employee) {
-          if (key === item.name && employee.id === item.id) {
+          if (key === item.name && employee.inputId === item.id) {
             employee[key] = item.value;
 
           }
@@ -73,7 +79,7 @@ function App() {
         <h1>Employees Table</h1>
         <article>
           <div>Updated Employees</div>
-          <div deletedEmployees={deletedEmployees}>Deleted Employees</div>
+          {/* <div deletedEmployees={deletedEmployees}>Deleted Employees</div> */}
         </article>
 
         <article className="table-container">
@@ -94,45 +100,45 @@ function App() {
                 {
                         employees.map((employee) => 
                           {
-                            const {id, name, surname, dateOfBirth, position, phoneNumber, isDeleted} = employee
+                            const {id, name, surname, dateOfBirth, position, phoneNumber, isDeleted, inputId} = employee
                             // console.log(id, name, surname, dateOfBirth, position, phoneNumber, isDeleted)
                             return(
-                              <tr key={id} className={`status ${isDeleted ? 'deleted' : 'not-deleted'}`}>
+                              <tr key={inputId} className={`status ${isDeleted ? 'deleted' : 'not-deleted'}`}>
                                 {/* <td>{id}</td>
                                 <td>{name}</td>
                                 <td>{surname}</td>
                                 <td>{dateOfBirth}</td> */}
                                 {/* <td>{position}</td> */}
                                 {/* <td>{phoneNumber}</td> */}
-                                <EditableTableCell onProductTableUpdate={handleProductTable} cellData={{
+                                <EditableTableCell handleEmployeeTableCell={handleEmployeeTableCell} cellAttrs={{
                                   "type": "id",
                                   value: id,
-                                  id: id
+                                  id: `${inputId}input1`
                                 }}/>
-                                <EditableTableCell onProductTableUpdate={handleProductTable} cellData={{
+                                <EditableTableCell handleEmployeeTableCell={handleEmployeeTableCell} cellAttrs={{
                                   "type": "name",
                                   value: name,
-                                  id: id
+                                  id: `${inputId}input2`
                                 }}/>
-                                <EditableTableCell onProductTableUpdate={handleProductTable} cellData={{
+                                <EditableTableCell handleEmployeeTableCell={handleEmployeeTableCell} cellAttrs={{
                                   "type": "surname",
                                   value: surname,
-                                  id: id
+                                  id: `${inputId}input3`
                                 }}/>
-                                <EditableTableCell onProductTableUpdate={handleProductTable} cellData={{
+                                <EditableTableCell handleEmployeeTableCell={handleEmployeeTableCell} cellAttrs={{
                                   "type": "dateOfBirth",
                                   value: dateOfBirth,
-                                  id: id
+                                  id: `${inputId}input4`
                                 }}/>
-                                <EditableTableCell onProductTableUpdate={handleProductTable} cellData={{
+                                <EditableTableCell handleEmployeeTableCell={handleEmployeeTableCell} cellAttrs={{
                                   "type": "position",
                                   value: position,
-                                  id: id
+                                  id: `${inputId}input5`
                                 }}/>
-                                <EditableTableCell onProductTableUpdate={handleProductTable} cellData={{
+                                <EditableTableCell handleEmployeeTableCell={handleEmployeeTableCell} cellAttrs={{
                                   "type": "phoneNumber",
                                   value: phoneNumber,
-                                  id: id
+                                  id: `${inputId}input6`
                                 }}/>
                                 <td className={`status ${isDeleted ? 'deleted' : 'not-deleted'}`}><span>{isDeleted ? 'deleted' : '.............'}</span></td>
                                 <td>
