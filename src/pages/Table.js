@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import {EmployeesContext} from '../context/EmployeesContext'
 import EmpoleyeesDataModal from '../components/EmployeesDataModal'
 import EditableTableCell from '../components/EditableTableCell'
-import Pagination from '../Pagination'
+import Pagination from '../components/Pagination'
 
 function Table() {
 
