@@ -221,6 +221,12 @@ table tr td input:focus{
   color: hsl(210, 3%, 12%);
 }
 
+article.btns-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
 
 button{
   border: none;
@@ -235,6 +241,10 @@ button{
   border-radius: 6px;
   cursor: pointer;
   transition: all .1s ease;
+}
+
+button:nth-child(1){
+  margin-right: 48px;
 }
 button:hover,button:focus{
   box-shadow: 0 10px 24px 3px rgba(15, 34, 205, 0.2);
@@ -282,7 +292,8 @@ article.modal{
   left: 50%;
   transform: translate(-50%, -50%) scale(0);
   opacity: 0;
-  width: 64vw;
+  /* width: 64vw; */
+  width: 50vw;
   height: 80%;
   /* height: auto; */
   background-color: #ffffff;
@@ -298,7 +309,7 @@ article.modal{
 }
 
 article.modal.empty{
-    height: auto;
+    height: 48%;
 }
 article.modal.not-empty{
     height: 80%;
@@ -328,20 +339,20 @@ article.modal a:active{
 }
 
  article.modal div{
-   overflow-y: scroll;
-   display: flex;
+    overflow-y: scroll;
+    display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    
-   padding: 24px;
-   margin-bottom: 48px;
-   width: 100%;
-   background-color:  #EDF3FB;
-   font-family: serif;
-   line-height: 32px;
-   font-size: 18px;
-   letter-spacing: 0.4px;
+    padding: 24px;
+    margin-bottom: 48px;
+    width: 100%;
+    height: 100%;
+    background-color:  #EDF3FB;
+    font-family: serif;
+    line-height: 32px;
+    font-size: 18px;
+    letter-spacing: 0.4px;
   }
   article.modal.empty div{
     overflow-y: auto;
@@ -350,6 +361,7 @@ article.modal a:active{
     overflow-y: auto;
   }
   article.modal div pre{
+    margin: 7px 14px;
     white-space: pre-wrap;
     word-wrap: break-word;
     text-align: justify;

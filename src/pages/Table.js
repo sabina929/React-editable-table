@@ -10,9 +10,8 @@ const {employees,isModalOpened,updatedAndDeletedEmployees,deleteEmployee,showMod
 
   return (
     <main>
-      <section className="container">
+        <section className="container">
             <h1>Employees Table</h1>
-
             <article className="table-container">
                 <table id="employees">
                     <thead>
@@ -81,16 +80,19 @@ const {employees,isModalOpened,updatedAndDeletedEmployees,deleteEmployee,showMod
                     </tbody>
                 </table>
             </article>
-
-                <button type='button' onClick={showModal}>Submit data</button>
+            <article className="btns-container">
+                {/* <form action='#' onSubmit={handleSubmit}> */}
+                    <button type='button' onClick={showModal}>Submit data</button>
+                {/* </form> */}
                 <button type='button' onClick={resetData}>Reset data</button>
-            </section>
+            </article>
+        </section>
 
             {
                 isModalOpened &&  <EmpoleyeesDataModal updatedAndDeletedEmployees={updatedAndDeletedEmployees} showModal={showModal}/>
             }
    
-        </main>
+    </main>
     )
 }
 
