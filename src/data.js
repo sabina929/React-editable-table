@@ -7,7 +7,6 @@ const employeesData = [
       position: 'IT Support Manager',
       phoneNumber: '+994512548575',
       isDeleted: false,
-      isUpdated: false,
       inputId: '001DBHX02ABC2'
     },
     {
@@ -18,7 +17,6 @@ const employeesData = [
         position: 'Software engineer',
         phoneNumber: '+994705246838',
         isDeleted: false,
-        isUpdated: false,
         inputId: '002JBHX02AJCC2'
     },
     {
@@ -29,7 +27,6 @@ const employeesData = [
         position: 'Information Security Analyst',
         phoneNumber: '+994558425123',
         isDeleted: false,
-        isUpdated: false,
         inputId: '003TABJC02ABC2'
     },
     {
@@ -40,7 +37,6 @@ const employeesData = [
         position: 'Data Quality Manager',
         phoneNumber: '+994558547525',
         isDeleted: false,
-        isUpdated: false,
         inputId: '004FEVB5ASIEC2'
     },
     {
@@ -51,7 +47,6 @@ const employeesData = [
         position: 'Software Architect',
         phoneNumber: '+994515768842',
         isDeleted: false,
-        isUpdated: false,
         inputId: '005FEVB5MNTJ2'
     },
     {
@@ -62,7 +57,6 @@ const employeesData = [
         position: 'Application Support Analyst',
         phoneNumber: '+994552413996',
         isDeleted: false,
-        isUpdated: false,
         inputId: '006FEVB5JJHLA2'
     },
     {
@@ -73,30 +67,27 @@ const employeesData = [
         position: 'UI/UX designer',
         phoneNumber: '+994515224887',
         isDeleted: false,
-        isUpdated: false,
         inputId: '007FEVB5RABQ2'
     },
     {
-        id: '008FEVB5JRUIK2',
+        id: '008SJVB5JRUIK2',
         name: 'Lalə',
         surname: 'Vəliyeva',
         dateOfBirth:'1991-06-18',
         position: 'Front-end developer',
         phoneNumber: '+994518562468',
         isDeleted: false,
-        isUpdated: false,
-        inputId: '008FEVB5JRUIK2'
+        inputId: '008SJVB5JRUIK2'
     },
     {
-        id: '009FEVB5XDUA2',
+        id: '009FEVB5XDJCA2',
         name: 'Natiq',
         surname: 'Yolçuyev',
         dateOfBirth:'1998-03-01',
         position: 'Back-end developer',
         phoneNumber: '+994704521585',
         isDeleted: false,
-        isUpdated: false,
-        inputId: '009FEVB5XDUA2'
+        inputId: '009FEVB5XDJCA2'
     },
     {
         id: '0010DEVB5GTYI2',
@@ -106,7 +97,6 @@ const employeesData = [
         position: 'System Architect',
         phoneNumber: '+994558621740',
         isDeleted: false,
-        isUpdated: false,
       	inputId: '0010DEVB5GTYI2'
     },
     {
@@ -117,7 +107,6 @@ const employeesData = [
       	position: 'Data analyst',
       	phoneNumber: '+994507428682',
       	isDeleted: false,
-      	isUpdated: false,
         inputId: '0011OAAB5GTYI2'
     },
     {
@@ -128,7 +117,6 @@ const employeesData = [
         position: 'Cloud Services Developer',
         phoneNumber: '+994708542148',
         isDeleted: false,
-        isUpdated: false,
         inputId: '0012TEB5GDTJQ2'
     },
     {
@@ -139,7 +127,6 @@ const employeesData = [
         position: 'Computer Systems Manager',
         phoneNumber: '+994512584736',
         isDeleted: false,
-        isUpdated: false,
         inputId: '0013XCADXGJJA2'
     },
     {
@@ -150,7 +137,6 @@ const employeesData = [
         position: 'Help Desk Specialist',
         phoneNumber: '+994518427615',
         isDeleted: false,
-        isUpdated: false,
         inputId: '0014QJHAACXJH2'
     },
     {
@@ -161,7 +147,6 @@ const employeesData = [
         position: 'Desktop Support Specialist',
         phoneNumber: '+994508547143',
         isDeleted: false,
-        isUpdated: false,
         inputId: '0015EELD0AJCD2'
     },
     {
@@ -172,7 +157,6 @@ const employeesData = [
         position: 'Network Architect',
         phoneNumber: '+994556574982',
         isDeleted: false,
-        isUpdated: false,
         inputId: '0016FEVB5JDDIK2'
     },
     {
@@ -183,7 +167,6 @@ const employeesData = [
         position: 'Cloud Consultant',
         phoneNumber: '+994705842193',
         isDeleted: false,
-        isUpdated: false,
         inputId: '0017FON0HPLDJ2'
     },
     {
@@ -194,7 +177,6 @@ const employeesData = [
         position: 'System administrator',
         phoneNumber: '+994558243698',
         isDeleted: false,
-        isUpdated: false,
         inputId: '0018YCVXJHGJA2'
     },
     {
@@ -205,7 +187,6 @@ const employeesData = [
         position: 'Network Engineer',
         phoneNumber: '+994515423674',
         isDeleted: false,
-        isUpdated: false,
         inputId: '0019DCRHJJXAA2'
     },
     {
@@ -216,7 +197,6 @@ const employeesData = [
         position: 'Technical Support Engineer',
         phoneNumber: '+994505421478',
         isDeleted: false,
-        isUpdated: false,
         inputId: '0020CCJXDDKJA2'
     },
     {
@@ -227,7 +207,6 @@ const employeesData = [
         position: 'Information Research Scientist',
         phoneNumber: '+994508475674',
         isDeleted: false,
-        isUpdated: false,
         inputId: '0021FEVB5DEEJ2'
     },
     {
@@ -238,7 +217,6 @@ const employeesData = [
         position: 'System Administrator',
         phoneNumber: '+994558423681',
         isDeleted: false,
-        isUpdated: false,
         inputId: '0022JBDD2AXJN2'
     },
     {
@@ -249,18 +227,16 @@ const employeesData = [
         position: 'Front-end developer',
         phoneNumber: '+994519654123',
         isDeleted: false,
-        isUpdated: false,
         inputId: '0023QJBB0HQJC2'
     },
     {
-        id: '0024QJBB0HQJC2',
+        id: '0024AAEHJJDCC2',
         name: 'Sayyad',
         surname: 'Mövsümov',
         dateOfBirth:'1984-10-21',
         position: 'Computer Network Architect',
         phoneNumber: '+994708462354',
         isDeleted: false,
-        isUpdated: false,
         inputId: '0024AAEHJJDCC2'
     },
     {
@@ -271,7 +247,6 @@ const employeesData = [
         position: 'UI/UX Designer',
         phoneNumber: '+994708542126',
         isDeleted: false,
-        isUpdated: false,
         inputId: '0025UJJSAADKC2'
     },
     {
@@ -282,7 +257,6 @@ const employeesData = [
         position: 'Cloud System Engineer',
         phoneNumber: '+994518547562',
         isDeleted: false,
-        isUpdated: false,
         inputId: '0026PADDJCADJ2'
     },
     {
@@ -293,7 +267,6 @@ const employeesData = [
         position: 'IT Analyst',
         phoneNumber: '+994557432586',
         isDeleted: false,
-        isUpdated: false,
         inputId: '0027KNHDDJXQQ2'
     },
     {
@@ -304,7 +277,6 @@ const employeesData = [
         position: 'Network Administrator',
         phoneNumber: '+994504187562',
         isDeleted: false,
-        isUpdated: false,
         inputId: '0028QAJJCDBJD2'
     },
     {
@@ -315,7 +287,6 @@ const employeesData = [
         position: 'Computer Systems Analyst',
         phoneNumber: '+994704571236',
         isDeleted: false,
-        isUpdated: false,
         inputId: '0029MJUDCAJAA2'
     },
     {
@@ -326,7 +297,6 @@ const employeesData = [
         position: 'IT Coordinator',
         phoneNumber: '+994519658458',
         isDeleted: false,
-        isUpdated: false,
         inputId: '0030DDLKMXCJJ2'
     },
   ];
