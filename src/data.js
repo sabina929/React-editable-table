@@ -13,7 +13,7 @@ const employeesData = [
     {
         id: '002JBHX02AJCC2',
         name: 'Aytac',
-        surname: 'Vəliyeva',
+        surname: 'Əliqızı',
         dateOfBirth:'1990-03-24',
         position: 'Software engineer',
         phoneNumber: '+994705246838',
@@ -67,8 +67,8 @@ const employeesData = [
     },
     {
         id: '007FEVB5RABQ2', 
-        name: 'Kifayət',
-        surname: 'Əliqızı',
+        name: 'Kərəm',
+        surname: 'Tapdıqoğlu',
         dateOfBirth:'1986-02-10',
         position: 'UI/UX designer',
         phoneNumber: '+994515224887',

@@ -1,37 +1,47 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useContext } from 'react';
+import {EmployeesContext} from './EmployeesContext'
 
-const UpdatedEmployeesList = ({employees}) => {
-    const [updatedEmployees, setUpdatedEmployees] = useState([])
+const UpdatedEmployeesList = () => {
+
+    const {updatedEmployees} = useContext(EmployeesContext)
+
+    const [updatedButNotDeletedEmployees, setUpdatedEmployees] = useState([])
   
     const getNotDeletedEmployees = useCallback( () => {
-      const notDeletedEmployees = employees.filter(updatedEmployee=> updatedEmployee.isDeleted !== true)
+      const notDeletedEmployees = updatedEmployees.filter(updatedEmployee=> updatedEmployee.isDeleted !== true)
         setUpdatedEmployees(notDeletedEmployees)
-    }, [employees])
+    }, [updatedEmployees])
   
     useEffect(() => {
         getNotDeletedEmployees()
-    }, [employees, getNotDeletedEmployees])
+    }, [updatedEmployees, getNotDeletedEmployees])
 
     return (
-        <section className='updated-list-container'>
-            <p>Updated employees</p>
-          {
-             updatedEmployees.length === 0 ? 'Nothing here...' : updatedEmployees.map(updatedEmployee =>{
-                const {id, name, surname, dateOfBirth, position, phoneNumber, inputId} = updatedEmployee
-                  return (
-                      <div key={inputId}>
-                          <h2>{name} {surname}</h2>
-                          <h3>{position}</h3>
-                          <div>
-                              <p>id: {id}</p>
-                              <p>dateOfBirth: {dateOfBirth}</p>
-                              <p>phoneNumber: {phoneNumber}</p>
-                          </div>
-                      </div>
-                  )
-              })
-          }
+        <main>
+
+        <section className='list-container'>
+            <h1>Updated employees</h1>
+            <article>
+
+                {
+                    updatedButNotDeletedEmployees.length === 0 ? <p>Nothing here...</p> : updatedButNotDeletedEmployees.map(updatedEmployee =>{
+                        const {id, name, surname, dateOfBirth, position, phoneNumber, inputId} = updatedEmployee
+                        return (
+                            <div key={inputId} className="employee">
+                                <h2>{name} {surname}</h2>
+                                <h3>{position}</h3>
+                                <div>
+                                    <p><span>ID:</span> {id}</p>
+                                    <p><span>Date of birth:</span> {dateOfBirth}</p>
+                                    <p><span>Phone number:</span> {phoneNumber}</p>
+                                </div>
+                            </div>
+                        )
+                    })
+                }
+            </article>
         </section>
+        </main>
     )
 }
 
