@@ -1,4 +1,4 @@
-import React, {createContext, useState, useEffect} from 'react'
+import React, {createContext, useState, useEffect, useCallback} from 'react'
 import data from '../data';
 
 export const EmployeesContext = createContext()
@@ -11,6 +11,10 @@ const EmployeesContextProvider = (props) => {
     const [isModalOpened, setIsModalOpened] = useState(false)
     const [updatedAndDeletedEmployees, setUpdatedAndDeletedEmployees] = useState({})
 
+    const [currentEmployees, setCurrentEmployees] = useState([])
+    const [currentPage, setCurrentPage] = useState(1)
+    const employeesPerPage=10
+    
     const deleteEmployee = (inputId) =>{
         let tempEmployees = [...employees];
     
@@ -33,75 +37,90 @@ const EmployeesContextProvider = (props) => {
         setEmployees(mappedEmployees)
       }
     
-      const showModal = ()=> {
-        setIsModalOpened(!isModalOpened)
-        let updatedAndDeletedEmployees = {
-          updated: [...updatedEmployees],
-          deleted: [...deletedEmployees]
-        }
-        // console.log(updatedAndDeletedEmployees)
-        setUpdatedAndDeletedEmployees(updatedAndDeletedEmployees)
+    const showModal = ()=> {
+      setIsModalOpened(!isModalOpened)
+      let updatedAndDeletedEmployees = {
+        updated: [...updatedEmployees],
+        deleted: [...deletedEmployees]
       }
+      // console.log(updatedAndDeletedEmployees)
+      setUpdatedAndDeletedEmployees(updatedAndDeletedEmployees)
+    }
       
-      const resetData = ()=> {
-        let copyOfData = JSON.parse(JSON.stringify(data))
-        setEmployees(copyOfData)
-        // const filteredEmployees = copyOfData.filter(employee=> employee.isDeleted === true)
-        setDeletedEmployees([])
-        setUpdatedEmployees([])
-        
-      }
+    const resetData = ()=> {
+      let copyOfData = JSON.parse(JSON.stringify(data))
+      setEmployees(copyOfData)
+      // const filteredEmployees = copyOfData.filter(employee=> employee.isDeleted === true)
+      setDeletedEmployees([])
+      setUpdatedEmployees([])
+      
+    }
     
-      const handleEmployeeTableCell = (e) => {
-        let str = e.target.id;
-        let arr = str.split("");
-        arr.splice(str.length - 6, str.length);
-        let idStr = arr.join('');
-    
-        let item = {
-          id: idStr,
-          name: e.target.name,
-          value: e.target.value
-        };
-        let copyOfEmployeesArr = employees.slice();
-       
-    
-        let editedEmployees = copyOfEmployeesArr.map(employee=> {
-          for (let key in employee) {
-              if (key === item.name && employee.inputId === item.id) {
-                employee[key] = item.value;
-              }
-          }
-          return employee;
-        });
-        setEmployees(editedEmployees);
-    
+    const handleEmployeeTableCell = (e) => {
+      let str = e.target.id;
+      let arr = str.split("");
+      arr.splice(str.length - 6, str.length);
+      let idStr = arr.join('');
+  
+      let item = {
+        id: idStr,
+        name: e.target.name,
+        value: e.target.value
       };
-    
-    
-      useEffect(() => {
-        let copyOfDataArr = JSON.parse(JSON.stringify(data))
-        let copyOfEmployeesArr = employees.slice();    
-    
-        const comparedEmloyeesArr = copyOfEmployeesArr.filter(employeeObj=>{
-          return !copyOfDataArr.some(copyEmployeeObj=>{       
-            return copyEmployeeObj.id === employeeObj.id && copyEmployeeObj.name === employeeObj.name  && copyEmployeeObj.surname === employeeObj.surname && copyEmployeeObj.dateOfBirth === employeeObj.dateOfBirth && copyEmployeeObj.position === employeeObj.position && copyEmployeeObj.phoneNumber === employeeObj.phoneNumber      
-          });
-        });
-        setUpdatedEmployees(comparedEmloyeesArr)
+      let copyOfEmployeesArr = employees.slice();
       
-      },[employees])
+  
+      let editedEmployees = copyOfEmployeesArr.map(employee=> {
+        for (let key in employee) {
+            if (key === item.name && employee.inputId === item.id) {
+              employee[key] = item.value;
+            }
+        }
+        return employee;
+      });
+      setEmployees(editedEmployees);
+  
+    };
     
     
-      // useEffect(() => {
-      //   console.log(updatedEmployees)
-      // }, [updatedEmployees])
-      // useEffect(() => {
-      //   console.log(deletedEmployees)
-      // }, [deletedEmployees])
+    useEffect(() => {
+      let copyOfDataArr = JSON.parse(JSON.stringify(data))
+      let copyOfEmployeesArr = employees.slice();    
+  
+      const comparedEmloyeesArr = copyOfEmployeesArr.filter(employeeObj=>{
+        return !copyOfDataArr.some(copyEmployeeObj=>{       
+          return copyEmployeeObj.id === employeeObj.id && copyEmployeeObj.name === employeeObj.name  && copyEmployeeObj.surname === employeeObj.surname && copyEmployeeObj.dateOfBirth === employeeObj.dateOfBirth && copyEmployeeObj.position === employeeObj.position && copyEmployeeObj.phoneNumber === employeeObj.phoneNumber      
+        });
+      });
+      setUpdatedEmployees(comparedEmloyeesArr)
+    
+    },[employees])
+    
+    // PAGINATION
+    const paginate = useCallback((pageNumber) => {
+    // console.log(pageNumber)
+
+    const indexOfLastBook = pageNumber * employeesPerPage;
+    const indexOfFirstBook = indexOfLastBook - employeesPerPage;
+    const currentEmployees = employees.slice(indexOfFirstBook, indexOfLastBook);
+      setCurrentEmployees(currentEmployees)
+      setCurrentPage(pageNumber)
+
+ 
+  }, [employeesPerPage, employees])
+    // useEffect(() => {
+    //   console.log(updatedEmployees)
+    // }, [updatedEmployees])
+    // useEffect(() => {
+    //   console.log(deletedEmployees)
+    // }, [deletedEmployees])
+
+    useEffect(() => {
+      paginate(currentPage)
+    }, [currentPage, paginate])
 
     return (
-        <EmployeesContext.Provider value={{employees,updatedEmployees,deletedEmployees,isModalOpened,updatedAndDeletedEmployees,deleteEmployee,showModal,resetData,handleEmployeeTableCell}}>
+        <EmployeesContext.Provider value={{employees,updatedEmployees,deletedEmployees,isModalOpened,updatedAndDeletedEmployees,deleteEmployee,showModal,resetData,handleEmployeeTableCell,currentEmployees,employeesPerPage, currentPage, paginate}}>
             {props.children}
         </EmployeesContext.Provider>
     )

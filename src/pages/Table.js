@@ -3,10 +3,11 @@ import React, { useContext } from 'react';
 import {EmployeesContext} from '../context/EmployeesContext'
 import EmpoleyeesDataModal from '../components/EmployeesDataModal'
 import EditableTableCell from '../components/EditableTableCell'
+import Pagination from '../Pagination'
 
 function Table() {
 
-const {employees,isModalOpened,updatedAndDeletedEmployees,deleteEmployee,showModal,resetData,handleEmployeeTableCell} = useContext(EmployeesContext)
+const {employees,isModalOpened,updatedAndDeletedEmployees,deleteEmployee,showModal,resetData,handleEmployeeTableCell, currentEmployees, employeesPerPage, currentPage, paginate} = useContext(EmployeesContext)
 
   return (
     <main>
@@ -28,7 +29,7 @@ const {employees,isModalOpened,updatedAndDeletedEmployees,deleteEmployee,showMod
                     </thead>
                     <tbody>
                     {
-                            employees.map((employee) => 
+                            currentEmployees.map((employee) => 
                             {
                                 const {id, name, surname, dateOfBirth, position, phoneNumber, isDeleted, inputId} = employee
                                 // console.log(id, name, surname, dateOfBirth, position, phoneNumber, isDeletedç inputId)
@@ -79,6 +80,7 @@ const {employees,isModalOpened,updatedAndDeletedEmployees,deleteEmployee,showMod
                         }
                     </tbody>
                 </table>
+                <Pagination employeesPerPage={employeesPerPage} employees={employees} currentPage={currentPage} paginate={paginate}/> 
             </article>
             <article className="btns-container">
                 {/* <form action='#' onSubmit={handleSubmit}> */}
@@ -86,6 +88,7 @@ const {employees,isModalOpened,updatedAndDeletedEmployees,deleteEmployee,showMod
                 {/* </form> */}
                 <button type='button' onClick={resetData}>Reset data</button>
             </article>
+            
         </section>
 
             {

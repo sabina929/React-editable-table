@@ -10,11 +10,6 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
 nav{
   position: absolute;
   top: 30px;
@@ -90,6 +85,10 @@ h1 {
 }
 article.table-container {
   margin-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 table#employees{
   background-color: #ffffff;
@@ -100,6 +99,7 @@ table#employees{
   box-shadow: 0 10px 24px 3px rgba(15, 34, 205, 0.05);
   border-collapse: separate;
   border-spacing: 0;
+  margin-bottom: 20px;
 }
 
 
@@ -515,3 +515,49 @@ section.error-container article li:active{
   transform: translateY(5px);
 }
 
+
+.pagination {
+  margin: 20px 60px 30px 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.pagination ul {
+  display: flex;
+  /* border: 1px solid red; */
+
+}
+.pagination ul li {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  box-shadow: 0 10px 24px 3px rgba(15, 34, 205, 0.05);
+  background-color: #ffffff;
+  cursor: pointer;
+}
+.pagination ul li:not(:last-child) {
+  margin-right: 10px;
+}
+.pagination ul li.selected {
+  background-color: #0F22CD;
+  color: white;
+}
+.pagination ul li div {
+  color: #0F22CD;
+}
+.pagination ul li.selected div {
+  color: white;
+}
+
+.pagination ul li:hover,.pagination ul li:focus{
+  box-shadow: 0 6px 20px 1px rgba(15, 34, 205, 0.15);
+}
+.pagination ul li:active{
+  box-shadow: 0 1px 5px 0px rgba(15, 34, 205, 0.05);
+  /* transform: translateY(5px); */
+}
