@@ -112,8 +112,6 @@ table#employees th {
   font-weight: 500;
 }
 
-
-
 table th:last-child{
   /* width: 60px; */
   display: flex;
@@ -147,8 +145,6 @@ table tr td{
   font-weight: 500;
   height: 60px;
 }
-
-
 
 table tr td:nth-child(1){
   width: 200px;
@@ -292,10 +288,8 @@ article.modal{
   left: 50%;
   transform: translate(-50%, -50%) scale(0);
   opacity: 0;
-  /* width: 64vw; */
   width: 50vw;
   height: 80%;
-  /* height: auto; */
   background-color: #ffffff;
   border-radius: 6px;
   box-shadow: 0 10px 24px 3px rgba(15, 34, 205, 0.05);
@@ -453,8 +447,6 @@ section.list-container article div.employee div p span{
   color: #74777A;
 }
 
-
-
 section.error-container h1{
   text-align: center;
   margin-top: 60px;
@@ -515,7 +507,6 @@ section.error-container article li:active{
   transform: translateY(5px);
 }
 
-
 .pagination {
   margin: 20px 60px 30px 60px;
   display: flex;
@@ -525,8 +516,6 @@ section.error-container article li:active{
 }
 .pagination ul {
   display: flex;
-  /* border: 1px solid red; */
-
 }
 .pagination ul li {
   list-style: none;
@@ -559,5 +548,4 @@ section.error-container article li:active{
 }
 .pagination ul li:active{
   box-shadow: 0 1px 5px 0px rgba(15, 34, 205, 0.05);
-  /* transform: translateY(5px); */
 }
