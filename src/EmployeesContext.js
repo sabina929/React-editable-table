@@ -9,6 +9,7 @@ const EmployeesContextProvider = (props) => {
     const [updatedEmployees, setUpdatedEmployees] = useState([])
     const [deletedEmployees, setDeletedEmployees] = useState([])
     const [isModalOpened, setIsModalOpened] = useState(false)
+    const [updatedAndDeletedEmployees, setUpdatedAndDeletedEmployees] = useState({})
 
     const deleteEmployee = (inputId) =>{
         let tempEmployees = [...employees];
@@ -34,6 +35,21 @@ const EmployeesContextProvider = (props) => {
     
       const showModal = ()=> {
         setIsModalOpened(!isModalOpened)
+        // let updatedAndDeletedEmployees = [...updatedEmployees,...deletedEmployees]
+        let updatedAndDeletedEmployees = {
+          updated: [...updatedEmployees],
+          deleted: [...deletedEmployees]
+        }
+        // console.log(updatedAndDeletedEmployees)
+        setUpdatedAndDeletedEmployees(updatedAndDeletedEmployees)
+      }
+      const resetData = ()=> {
+        let copyOfData = JSON.parse(JSON.stringify(data))
+        setEmployees(copyOfData)
+        // const filteredEmployees = copyOfData.filter(employee=> employee.isDeleted === true)
+        setDeletedEmployees([])
+        setUpdatedEmployees([])
+        
       }
     
       const handleEmployeeTableCell = (e) => {
@@ -77,12 +93,15 @@ const EmployeesContextProvider = (props) => {
       },[employees])
     
     
-    //   useEffect(() => {
-    //     console.log(updatedEmployees)
-    //   }, [updatedEmployees])
+      // useEffect(() => {
+      //   console.log(updatedEmployees)
+      // }, [updatedEmployees])
+      // useEffect(() => {
+      //   console.log(deletedEmployees)
+      // }, [deletedEmployees])
 
     return (
-        <EmployeesContext.Provider value={{employees,updatedEmployees,deletedEmployees,isModalOpened,deleteEmployee,showModal,handleEmployeeTableCell}}>
+        <EmployeesContext.Provider value={{employees,updatedEmployees,deletedEmployees,isModalOpened,updatedAndDeletedEmployees,deleteEmployee,showModal,resetData,handleEmployeeTableCell}}>
             {props.children}
         </EmployeesContext.Provider>
     )

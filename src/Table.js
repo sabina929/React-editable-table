@@ -6,7 +6,7 @@ import EditableTableCell from './EditableTableCell'
 
 function Table() {
 
-const {employees,isModalOpened,deleteEmployee,showModal,handleEmployeeTableCell} = useContext(EmployeesContext)
+const {employees,isModalOpened,updatedAndDeletedEmployees,deleteEmployee,showModal,resetData,handleEmployeeTableCell} = useContext(EmployeesContext)
 
   return (
     <main>
@@ -83,10 +83,11 @@ const {employees,isModalOpened,deleteEmployee,showModal,handleEmployeeTableCell}
             </article>
 
                 <button type='button' onClick={showModal}>Submit data</button>
+                <button type='button' onClick={resetData}>Reset data</button>
             </section>
 
             {
-            isModalOpened &&  <EmpoleyeesDataModal employees={employees} showModal={showModal}/>
+            isModalOpened &&  <EmpoleyeesDataModal updatedAndDeletedEmployees={updatedAndDeletedEmployees} showModal={showModal}/>
             }
    
         </main>
