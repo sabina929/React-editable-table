@@ -10,14 +10,13 @@ const EmployeesContextProvider = (props) => {
     const [deletedEmployees, setDeletedEmployees] = useState([])
     const [isModalOpened, setIsModalOpened] = useState(false)
     const [updatedAndDeletedEmployees, setUpdatedAndDeletedEmployees] = useState({})
-
     const [currentEmployees, setCurrentEmployees] = useState([])
     const [currentPage, setCurrentPage] = useState(1)
-    const employeesPerPage=10
+    const employeesPerPage = 10
     
+    // DELETE EMPLOYEE
     const deleteEmployee = (inputId) =>{
         let tempEmployees = [...employees];
-    
         const mappedEmployees = tempEmployees.map(employee => {
           if(employee.inputId === inputId){
             if(employee.isDeleted){
@@ -30,13 +29,14 @@ const EmployeesContextProvider = (props) => {
           return employee
         })
 
-        const filteredEmployees = mappedEmployees.filter(employee=> employee.isDeleted === true)
-        setDeletedEmployees(filteredEmployees)
+        const markedAsDeletedEmployees = mappedEmployees.filter(employee=> employee.isDeleted === true)
+        setDeletedEmployees(markedAsDeletedEmployees)
         // console.log(mappedEmployees)
-        // console.log(filteredEmployees)
+        // console.log(markedAsDeletedEmployees)
         setEmployees(mappedEmployees)
-      }
+    }
     
+    // GET UPDATED AND DELETED LISTS
     const showModal = ()=> {
       setIsModalOpened(!isModalOpened)
       const notDeletedEmployees = updatedEmployees.filter(updatedEmployee=> updatedEmployee.isDeleted !== true)
@@ -48,6 +48,7 @@ const EmployeesContextProvider = (props) => {
       setUpdatedAndDeletedEmployees(updatedAndDeletedEmployees)
     }
       
+    // RESET DATA
     const resetData = ()=> {
       let copyOfData = JSON.parse(JSON.stringify(data))
       setEmployees(copyOfData)
@@ -57,6 +58,7 @@ const EmployeesContextProvider = (props) => {
       
     }
     
+    // EDITING TABLE CELLS
     const handleEmployeeTableCell = (e) => {
       let str = e.target.id;
       let arr = str.split("");
@@ -83,7 +85,7 @@ const EmployeesContextProvider = (props) => {
   
     };
     
-    
+    // COMPARE INITIAL AND UPDATED
     useEffect(() => {
       let copyOfDataArr = JSON.parse(JSON.stringify(data))
       let copyOfEmployeesArr = employees.slice();    
@@ -94,24 +96,21 @@ const EmployeesContextProvider = (props) => {
         });
       });
       setUpdatedEmployees(comparedEmloyeesArr)
-    
     },[employees])
     
     // PAGINATION
     const paginate = useCallback((pageNumber) => {
-    // console.log(pageNumber)
+        const indexOfLastBook = pageNumber * employeesPerPage;
+        const indexOfFirstBook = indexOfLastBook - employeesPerPage;
+        const currentEmployees = employees.slice(indexOfFirstBook, indexOfLastBook);
+        setCurrentEmployees(currentEmployees)
+        setCurrentPage(pageNumber)
+    }, [employeesPerPage, employees])
 
-    const indexOfLastBook = pageNumber * employeesPerPage;
-    const indexOfFirstBook = indexOfLastBook - employeesPerPage;
-    const currentEmployees = employees.slice(indexOfFirstBook, indexOfLastBook);
-      setCurrentEmployees(currentEmployees)
-      setCurrentPage(pageNumber)
-
- 
-  }, [employeesPerPage, employees])
     // useEffect(() => {
     //   console.log(updatedEmployees)
     // }, [updatedEmployees])
+
     // useEffect(() => {
     //   console.log(deletedEmployees)
     // }, [deletedEmployees])
