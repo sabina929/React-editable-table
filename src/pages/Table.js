@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 
-import {EmployeesContext} from './EmployeesContext'
-import EmpoleyeesDataModal from './EmployeesDataModal.js'
-import EditableTableCell from './EditableTableCell'
+import {EmployeesContext} from '../context/EmployeesContext'
+import EmpoleyeesDataModal from '../components/EmployeesDataModal'
+import EditableTableCell from '../components/EditableTableCell'
 
 function Table() {
 
@@ -87,7 +87,7 @@ const {employees,isModalOpened,updatedAndDeletedEmployees,deleteEmployee,showMod
             </section>
 
             {
-            isModalOpened &&  <EmpoleyeesDataModal updatedAndDeletedEmployees={updatedAndDeletedEmployees} showModal={showModal}/>
+                isModalOpened &&  <EmpoleyeesDataModal updatedAndDeletedEmployees={updatedAndDeletedEmployees} showModal={showModal}/>
             }
    
         </main>

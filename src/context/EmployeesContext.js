@@ -1,5 +1,5 @@
 import React, {createContext, useState, useEffect} from 'react'
-import data from './data';
+import data from '../data';
 
 export const EmployeesContext = createContext()
 
@@ -35,7 +35,6 @@ const EmployeesContextProvider = (props) => {
     
       const showModal = ()=> {
         setIsModalOpened(!isModalOpened)
-        // let updatedAndDeletedEmployees = [...updatedEmployees,...deletedEmployees]
         let updatedAndDeletedEmployees = {
           updated: [...updatedEmployees],
           deleted: [...deletedEmployees]
@@ -43,6 +42,7 @@ const EmployeesContextProvider = (props) => {
         // console.log(updatedAndDeletedEmployees)
         setUpdatedAndDeletedEmployees(updatedAndDeletedEmployees)
       }
+      
       const resetData = ()=> {
         let copyOfData = JSON.parse(JSON.stringify(data))
         setEmployees(copyOfData)

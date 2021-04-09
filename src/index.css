@@ -369,7 +369,6 @@ i.fas.fa-times{
 
 section.list-container article{
   width: 83vw;
-  /* width: auto; */
   height: auto;
   display: flex;
   flex-direction: row;

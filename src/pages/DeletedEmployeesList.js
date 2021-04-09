@@ -1,5 +1,5 @@
 import React, { useContext }  from 'react'
-import {EmployeesContext} from './EmployeesContext'
+import {EmployeesContext} from '../context/EmployeesContext'
 
 const DeletedEmployeesList = () => {
     const {deletedEmployees} = useContext(EmployeesContext)

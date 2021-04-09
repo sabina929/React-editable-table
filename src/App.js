@@ -2,12 +2,12 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 
-import UpdatedEmployeesList from './UpdatedEmployeesList'
-import EmployeesContextProvider from './EmployeesContext';
-import DeletedEmployeesList from './DeletedEmployeesList'
-import Table from './Table'
-import Navbar from './Navbar'
-import Error from './Error'
+import EmployeesContextProvider from './context/EmployeesContext';
+import UpdatedEmployeesList from './pages/UpdatedEmployeesList'
+import DeletedEmployeesList from './pages/DeletedEmployeesList'
+import Table from './pages/Table'
+import Navbar from './components/Navbar'
+import Error from './pages/Error'
 
 
 const App = () => {
