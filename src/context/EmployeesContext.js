@@ -39,8 +39,9 @@ const EmployeesContextProvider = (props) => {
     
     const showModal = ()=> {
       setIsModalOpened(!isModalOpened)
+      const notDeletedEmployees = updatedEmployees.filter(updatedEmployee=> updatedEmployee.isDeleted !== true)
       let updatedAndDeletedEmployees = {
-        updated: [...updatedEmployees],
+        updated: [...notDeletedEmployees],
         deleted: [...deletedEmployees]
       }
       // console.log(updatedAndDeletedEmployees)
