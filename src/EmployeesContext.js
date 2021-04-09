@@ -10,7 +10,6 @@ const EmployeesContextProvider = (props) => {
     const [deletedEmployees, setDeletedEmployees] = useState([])
     const [isModalOpened, setIsModalOpened] = useState(false)
 
-  
     const deleteEmployee = (inputId) =>{
         let tempEmployees = [...employees];
     
@@ -25,13 +24,12 @@ const EmployeesContextProvider = (props) => {
           }
           return employee
         })
+
         const filteredEmployees = mappedEmployees.filter(employee=> employee.isDeleted === true)
-    
         setDeletedEmployees(filteredEmployees)
         // console.log(mappedEmployees)
         // console.log(filteredEmployees)
         setEmployees(mappedEmployees)
-        
       }
     
       const showModal = ()=> {
@@ -39,7 +37,6 @@ const EmployeesContextProvider = (props) => {
       }
     
       const handleEmployeeTableCell = (e) => {
-    
         let str = e.target.id;
         let arr = str.split("");
         arr.splice(str.length - 6, str.length);
@@ -66,7 +63,6 @@ const EmployeesContextProvider = (props) => {
       };
     
     
-    
       useEffect(() => {
         let copyOfDataArr = JSON.parse(JSON.stringify(data))
         let copyOfEmployeesArr = employees.slice();    
@@ -85,12 +81,10 @@ const EmployeesContextProvider = (props) => {
     //     console.log(updatedEmployees)
     //   }, [updatedEmployees])
 
-
     return (
         <EmployeesContext.Provider value={{employees,updatedEmployees,deletedEmployees,isModalOpened,deleteEmployee,showModal,handleEmployeeTableCell}}>
             {props.children}
         </EmployeesContext.Provider>
-
     )
 }
 

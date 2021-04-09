@@ -2,14 +2,13 @@ import React, { useState, useEffect, useCallback, useContext } from 'react';
 import {EmployeesContext} from './EmployeesContext'
 
 const UpdatedEmployeesList = () => {
-
     const {updatedEmployees} = useContext(EmployeesContext)
 
-    const [updatedButNotDeletedEmployees, setUpdatedEmployees] = useState([])
+    const [updatedButNotDeletedEmployees, setUpdatedButNotDeletedEmployees] = useState([])
   
     const getNotDeletedEmployees = useCallback( () => {
       const notDeletedEmployees = updatedEmployees.filter(updatedEmployee=> updatedEmployee.isDeleted !== true)
-        setUpdatedEmployees(notDeletedEmployees)
+      setUpdatedButNotDeletedEmployees(notDeletedEmployees)
     }, [updatedEmployees])
   
     useEffect(() => {
