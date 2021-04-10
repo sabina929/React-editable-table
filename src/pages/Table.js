@@ -8,7 +8,7 @@ import Search from '../components/Search'
 
 function Table() {
 
-const {employees,isModalOpened,updatedAndDeletedEmployees,deleteEmployee,showModal,resetData,handleEmployeeTableCell, currentEmployees, employeesPerPage, currentPage, paginate, searchTerm, handleChange} = useContext(EmployeesContext)
+const {employees,isModalOpened,updatedAndDeletedEmployees,deleteEmployee,showModal,resetData,handleEmployeeTableCell, currentEmployees, employeesPerPage, currentPage, paginate, searchTerm, isSearched, handleChange} = useContext(EmployeesContext)
 
   return (
     <main>
@@ -83,7 +83,7 @@ const {employees,isModalOpened,updatedAndDeletedEmployees,deleteEmployee,showMod
                     </tbody>
                 </table>
                 {
-                    searchTerm ? null :<Pagination employeesPerPage={employeesPerPage} employees={employees} currentPage={currentPage} paginate={paginate}/> 
+                    isSearched ? null :<Pagination employeesPerPage={employeesPerPage} employees={employees} currentPage={currentPage} paginate={paginate}/> 
                 }
                 
             </article>
