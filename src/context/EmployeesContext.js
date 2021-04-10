@@ -77,34 +77,43 @@ const EmployeesContextProvider = (props) => {
       let copyOfEmployeesArr = employees.slice();
 
       const textRegex = /([0-9-!$@#%^&*()_+|~=`{}\[\]:";'<>?,.\\\/])+/ig// eslint-disable-line
+      const positionTextRegex = /([0-9!$@#%^*_+~=`\[\]";'<>?.])+/ig// eslint-disable-line
       const phoneRegex = /^(\+|\d)[0-9]{7,16}$/
     
   
       let editedEmployees = copyOfEmployeesArr.map(employee=> {
         for (let key in employee) {
             if (key === item.name && employee.inputId === item.id) {
-              // employee[key] = item.value;
-
               if(item.type==='tel'){
                 if(phoneRegex.test(item.value)){
                   employee[key] = item.value;
                   // console.log(item.type, phoneRegex.test(item.value), item.id)
                 }
                 else if(!phoneRegex.test(item.value)){
-                  console.log(item.type, phoneRegex.test(item.value), item.id)
-                  // break                  
+                  // console.log(item.type, phoneRegex.test(item.value), item.id)
+                  break                  
                 }
               }
-              // else if(item.type==='text' && item.name!=='id'&&item.type!=='tel'){
-              //   if(!textRegex.test(item.value) && item.value !==''){
-              //     employee[key] = item.value;
-              //     // console.log(item.type, textRegex.test(item.value), item.id)
-              //   }
-              //   else if(textRegex.test(item.value) || item.value ===''){
-              //     console.log(item.type, textRegex.test(item.value), item.id)
-              //     // break
-              //   }
-              // }
+              else if(item.type==='text' && item.name!=='id'&&item.type!=='tel'&&(item.name==='name'||item.name==='surname')){
+                if(!textRegex.test(item.value) && item.value !==''){
+                  employee[key] = item.value;
+                  // console.log(item.type, textRegex.test(item.value), item.id)
+                }
+                else if(textRegex.test(item.value) || item.value ===''){
+                  // console.log(item.type, textRegex.test(item.value), item.id)
+                  break
+                }
+              }
+              else if(item.type==='text' && item.name!=='id'&&item.type!=='tel'&&item.name==='position'){
+                if(!positionTextRegex.test(item.value) && item.value !==''){
+                  employee[key] = item.value;
+                  // console.log(item.type, positionTextRegex.test(item.value), item.id)
+                }
+                else if(positionTextRegex.test(item.value) || item.value ===''){
+                  // console.log(item.type, positionTextRegex.test(item.value), item.id)
+                  break
+                }
+              }
               else{
                  employee[key] = item.value;
 
@@ -114,11 +123,7 @@ const EmployeesContextProvider = (props) => {
         return employee;
       });
 
-      // if(item.name==='name' && textRegex.test(item.value)){
-        setEmployees(editedEmployees);
-        
-      // }
-  
+        setEmployees(editedEmployees);  
     };
     
     // COMPARE INITIAL AND UPDATED
