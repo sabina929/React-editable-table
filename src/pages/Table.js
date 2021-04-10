@@ -38,32 +38,38 @@ const {employees,isModalOpened,updatedAndDeletedEmployees,deleteEmployee,showMod
                                 return(
                                 <tr key={inputId} className={`status ${isDeleted ? 'deleted' : 'not-deleted'}`}>
                                     <EditableTableCell handleEmployeeTableCell={handleEmployeeTableCell} cellAttrs={{
-                                    "type": "id",
+                                    "type": "text",
+                                    "name": "id",
                                     value: id,
                                     id: `${inputId}input1`
                                     }}/>
                                     <EditableTableCell handleEmployeeTableCell={handleEmployeeTableCell} cellAttrs={{
-                                    "type": "name",
+                                    "type": "text",
+                                    "name": "name",
                                     value: name,
                                     id: `${inputId}input2`
                                     }}/>
                                     <EditableTableCell handleEmployeeTableCell={handleEmployeeTableCell} cellAttrs={{
-                                    "type": "surname",
+                                    "type": "text",
+                                    "name": "surname",
                                     value: surname,
                                     id: `${inputId}input3`
                                     }}/>
                                     <EditableTableCell handleEmployeeTableCell={handleEmployeeTableCell} cellAttrs={{
-                                    "type": "dateOfBirth",
+                                    "type": "date",
+                                    "name": "dateOfBirth",
                                     value: dateOfBirth,
                                     id: `${inputId}input4`
                                     }}/>
                                     <EditableTableCell handleEmployeeTableCell={handleEmployeeTableCell} cellAttrs={{
-                                    "type": "position",
+                                    "type": "text",
+                                    "name": "position",
                                     value: position,
                                     id: `${inputId}input5`
                                     }}/>
                                     <EditableTableCell handleEmployeeTableCell={handleEmployeeTableCell} cellAttrs={{
-                                    "type": "phoneNumber",
+                                    "type": "tel",
+                                    "name": "phoneNumber",
                                     value: phoneNumber,
                                     id: `${inputId}input6`
                                     }}/>
