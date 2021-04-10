@@ -13,6 +13,8 @@ const EmployeesContextProvider = (props) => {
     const [currentEmployees, setCurrentEmployees] = useState([])
     const [currentPage, setCurrentPage] = useState(1)
     const employeesPerPage = 10
+
+    const [searchTerm, setSearchTerm] = useState("");
     
     // DELETE EMPLOYEE
     const deleteEmployee = (inputId) =>{
@@ -119,8 +121,32 @@ const EmployeesContextProvider = (props) => {
       paginate(currentPage)
     }, [currentPage, paginate])
 
+    const handleChange = event => {
+      setSearchTerm(event.target.value);
+    };
+
+    const getSearchResult = useCallback(() => {
+      let results = []
+      let copyOfEmployeesArr = employees.slice();
+      if(searchTerm === ''){
+        return
+      }
+      else{
+        results = copyOfEmployeesArr.filter(employee => 
+          employee.name.toLowerCase().includes(searchTerm.toLowerCase()) || employee.surname.toLowerCase().includes(searchTerm.toLowerCase()) || employee.id.toLowerCase().includes(searchTerm.toLowerCase()) || employee.dateOfBirth.includes(searchTerm) || employee.position.toLowerCase().includes(searchTerm.toLowerCase()) || employee.phoneNumber.includes(searchTerm)
+          )
+          setCurrentEmployees(results);
+      }
+
+    }, [searchTerm, employees])
+
+    useEffect(() => {
+      getSearchResult()   
+    },[getSearchResult]);  
+   
+
     return (
-        <EmployeesContext.Provider value={{employees,updatedEmployees,deletedEmployees,isModalOpened,updatedAndDeletedEmployees,deleteEmployee,showModal,resetData,handleEmployeeTableCell,currentEmployees,employeesPerPage, currentPage, paginate}}>
+        <EmployeesContext.Provider value={{employees,updatedEmployees,deletedEmployees,isModalOpened,updatedAndDeletedEmployees,deleteEmployee,showModal,resetData,handleEmployeeTableCell,currentEmployees,employeesPerPage, currentPage, paginate, searchTerm, handleChange}}>
             {props.children}
         </EmployeesContext.Provider>
     )

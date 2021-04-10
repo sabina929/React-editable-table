@@ -4,13 +4,15 @@ import {EmployeesContext} from '../context/EmployeesContext'
 import EmpoleyeesDataModal from '../components/EmployeesDataModal'
 import EditableTableCell from '../components/EditableTableCell'
 import Pagination from '../components/Pagination'
+import Search from '../components/Search'
 
 function Table() {
 
-const {employees,isModalOpened,updatedAndDeletedEmployees,deleteEmployee,showModal,resetData,handleEmployeeTableCell, currentEmployees, employeesPerPage, currentPage, paginate} = useContext(EmployeesContext)
+const {employees,isModalOpened,updatedAndDeletedEmployees,deleteEmployee,showModal,resetData,handleEmployeeTableCell, currentEmployees, employeesPerPage, currentPage, paginate, searchTerm, handleChange} = useContext(EmployeesContext)
 
   return (
     <main>
+        <Search searchTerm={searchTerm} handleChange={handleChange}/>
         <section className="container">
             <h1>Employees Table</h1>
             <article className="table-container">
@@ -80,7 +82,10 @@ const {employees,isModalOpened,updatedAndDeletedEmployees,deleteEmployee,showMod
                         }
                     </tbody>
                 </table>
-                <Pagination employeesPerPage={employeesPerPage} employees={employees} currentPage={currentPage} paginate={paginate}/> 
+                {
+                    searchTerm ? null :<Pagination employeesPerPage={employeesPerPage} employees={employees} currentPage={currentPage} paginate={paginate}/> 
+                }
+                
             </article>
             <article className="btns-container">
                 {/* <form action='#' onSubmit={handleSubmit}> */}
