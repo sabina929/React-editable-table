@@ -131,6 +131,8 @@ const EmployeesContextProvider = (props) => {
       let copyOfEmployeesArr = employees.slice();
       if(searchTerm === ''|| searchTerm === null || searchTerm === ' '){
         setIsSearched(false)
+        paginate(currentPage)
+        // return
       }
       else{
         results = copyOfEmployeesArr.filter(employee => 
@@ -140,7 +142,7 @@ const EmployeesContextProvider = (props) => {
           setCurrentEmployees(results);
       }
 
-    }, [searchTerm, employees])
+    }, [searchTerm, employees,currentPage, paginate])
 
     useEffect(() => {
       getSearchResult()   
