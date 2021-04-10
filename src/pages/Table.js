@@ -8,11 +8,11 @@ import Search from '../components/Search'
 
 function Table() {
 
-const {employees,isModalOpened,updatedAndDeletedEmployees,deleteEmployee,showModal,resetData,handleEmployeeTableCell, currentEmployees, employeesPerPage, currentPage, paginate, searchTerm, isSearched, handleChange} = useContext(EmployeesContext)
+const {employees,isModalOpened,updatedAndDeletedEmployees,deleteEmployee,showModal,resetData,handleEmployeeTableCell, currentEmployees, employeesPerPage, currentPage, paginate, searchTerm, isSearched, handleChange, handleSubmit} = useContext(EmployeesContext)
 
   return (
     <main>
-        <Search searchTerm={searchTerm} handleChange={handleChange}/>
+        <Search searchTerm={searchTerm} handleChange={handleChange} handleSubmit={handleSubmit}/>
         <section className="container">
             <h1>Employees Table</h1>
             <article className="table-container">

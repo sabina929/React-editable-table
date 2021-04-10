@@ -100,7 +100,15 @@ const EmployeesContextProvider = (props) => {
       });
       setUpdatedEmployees(comparedEmloyeesArr)
     },[employees])
-    
+
+     // useEffect(() => {
+    //   console.log(updatedEmployees)
+    // }, [updatedEmployees])
+
+    // useEffect(() => {
+    //   console.log(deletedEmployees)
+    // }, [deletedEmployees])
+
     // PAGINATION
     const paginate = useCallback((pageNumber) => {
         const indexOfLastBook = pageNumber * employeesPerPage;
@@ -110,29 +118,21 @@ const EmployeesContextProvider = (props) => {
         setCurrentPage(pageNumber)
     }, [employeesPerPage, employees])
 
-    // useEffect(() => {
-    //   console.log(updatedEmployees)
-    // }, [updatedEmployees])
-
-    // useEffect(() => {
-    //   console.log(deletedEmployees)
-    // }, [deletedEmployees])
-
     useEffect(() => {
       paginate(currentPage)
     }, [currentPage, paginate])
 
-    const handleChange = event => {
-      setSearchTerm(event.target.value);
+    // HANDLE INPUT CHANGE EVENT
+    const handleChange = e => {
+      setSearchTerm(e.target.value);
     };
-
+    // GET SEARCH RESULT
     const getSearchResult = useCallback(() => {
       let results = []
       let copyOfEmployeesArr = employees.slice();
       if(searchTerm === ''|| searchTerm === null || searchTerm === ' '){
         setIsSearched(false)
         paginate(currentPage)
-        // return
       }
       else{
         results = copyOfEmployeesArr.filter(employee => 
@@ -144,13 +144,21 @@ const EmployeesContextProvider = (props) => {
 
     }, [searchTerm, employees,currentPage, paginate])
 
+
+    // GET RESULTS ON CHANGE EVENT (WHILE TYPING)
     useEffect(() => {
       getSearchResult()   
     },[getSearchResult]);  
+    
+    // GET RESULTS ON SUBMIT EVENT (AFTER CLICKING SEARCH ICON)
+    const handleSubmit = e => {
+      e.preventDefault()
+      getSearchResult()   
+    };
    
 
     return (
-        <EmployeesContext.Provider value={{employees,updatedEmployees,deletedEmployees,isModalOpened,updatedAndDeletedEmployees,deleteEmployee,showModal,resetData,handleEmployeeTableCell,currentEmployees,employeesPerPage, currentPage, paginate, searchTerm, isSearched, handleChange}}>
+        <EmployeesContext.Provider value={{employees,updatedEmployees,deletedEmployees,isModalOpened,updatedAndDeletedEmployees,deleteEmployee,showModal,resetData,handleEmployeeTableCell,currentEmployees,employeesPerPage, currentPage, paginate, searchTerm, isSearched, handleChange, handleSubmit}}>
             {props.children}
         </EmployeesContext.Provider>
     )

@@ -562,6 +562,11 @@ section.search-container{
   justify-content: center;
   align-items: center;
 }
+section.search-container form{
+
+  width: 100%;
+  height: 100%;
+}
 section.search-container input{
   width: 100%;
   height: 100%;
@@ -580,4 +585,29 @@ section.search-container input::placeholder{
   font-weight: 400;
   font-size: 16px;
   color:#74777A;
+}
+section.search-container button{
+  position: absolute;
+  top: 50%;
+  right: 0px;
+  transform: translate(-50%,-50%);
+  color: #0F22CD;
+  background-color: transparent;
+  /* background-color: red; */
+  border-radius: 6px;
+  padding: 0px;
+  width: 22px;
+  height: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+section.search-container button:hover,section.search-container button:focus{
+  box-shadow: none;
+}
+section.search-container button:active{
+  box-shadow:none;
+  transform: translate(-50%,-50%);
 }
