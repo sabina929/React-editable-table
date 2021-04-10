@@ -91,20 +91,20 @@ const EmployeesContextProvider = (props) => {
                   // console.log(item.type, phoneRegex.test(item.value), item.id)
                 }
                 else if(!phoneRegex.test(item.value)){
-                  // console.log(item.type, phoneRegex.test(item.value), item.id)
-                  break                  
+                  console.log(item.type, phoneRegex.test(item.value), item.id)
+                  // break                  
                 }
               }
-              else if(item.type==='text' && item.name!=='id'&&item.type!=='tel'){
-                if(!textRegex.test(item.value) && item.value !==''){
-                  employee[key] = item.value;
-                  // console.log(item.type, textRegex.test(item.value), item.id)
-                }
-                else if(textRegex.test(item.value) || item.value ===''){
-                  // console.log(item.type, textRegex.test(item.value), item.id)
-                  break
-                }
-              }
+              // else if(item.type==='text' && item.name!=='id'&&item.type!=='tel'){
+              //   if(!textRegex.test(item.value) && item.value !==''){
+              //     employee[key] = item.value;
+              //     // console.log(item.type, textRegex.test(item.value), item.id)
+              //   }
+              //   else if(textRegex.test(item.value) || item.value ===''){
+              //     console.log(item.type, textRegex.test(item.value), item.id)
+              //     // break
+              //   }
+              // }
               else{
                  employee[key] = item.value;
 

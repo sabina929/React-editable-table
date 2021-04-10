@@ -226,8 +226,6 @@ table tr td input[type='date']::-webkit-calendar-picker-indicator{
   opacity: 0.6;
   cursor: pointer;
   filter: invert(0.1);
-  /* filter: sepia(100%); */
-  /* filter: saturate(10000%); */
 }
 
 article.btns-container{
@@ -568,7 +566,6 @@ section.search-container{
   position: absolute;
   top: 30px;
   left: 30px;
-  /* transform: translate(-50%,-50%); */
   width: 200px;
   height: 40px;
   display: flex;
@@ -610,7 +607,6 @@ section.search-container button{
   transform: translate(-50%,-50%);
   color: #0F22CD;
   background-color: transparent;
-  /* background-color: red; */
   border-radius: 6px;
   padding: 0px;
   width: 22px;
