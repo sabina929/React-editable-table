@@ -76,7 +76,7 @@ const EmployeesContextProvider = (props) => {
       };
       let copyOfEmployeesArr = employees.slice();
 
-      const textRegex = /([0-9-!$@#%^&*()_+|~=`{}\[\]:";'<>?,.\\\/])+/ig
+      const textRegex = /([0-9-!$@#%^&*()_+|~=`{}\[\]:";'<>?,.\\\/])+/ig// eslint-disable-line
       const phoneRegex = /^(\+|\d)[0-9]{7,16}$/
     
   
