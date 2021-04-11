@@ -208,6 +208,20 @@ table tr td input {
   transition: all .3s ease;
 }
 
+
+
+table tr td input[type='date']{
+  background-color: #ffffff;
+}
+table tr td input[type='date']:focus{
+  padding-right: 2px;
+}
+table tr td input[type='date']::-webkit-calendar-picker-indicator{
+  opacity: 0.6;
+  cursor: pointer;
+  filter: invert(0.1);
+}
+
 table tr td input:focus{
   outline: none;
   /* border: 1.5px solid rgba(15, 34, 205, 1); */
@@ -217,15 +231,6 @@ table tr td input:focus{
   background-color: rgba(15, 34, 205, 0.03);
   /* color: #0F22CD; */
   color: hsl(210, 3%, 12%);
-}
-
-table tr td input[type='date']:focus{
-  padding-right: 2px;
-}
-table tr td input[type='date']::-webkit-calendar-picker-indicator{
-  opacity: 0.6;
-  cursor: pointer;
-  filter: invert(0.1);
 }
 
 article.btns-container{
