@@ -8,7 +8,7 @@ const Pagination = ({employeesPerPage, employees, currentPage, paginate}) => {
     }
 
     return (
-        <div className="pagination">
+        <article className="pagination-container">
             <ul>
                 {
                     pageNumbers.length === 0 ? <li className="selected" onClick={() => paginate(1)}><div>1</div></li> : null
@@ -22,7 +22,7 @@ const Pagination = ({employeesPerPage, employees, currentPage, paginate}) => {
                 })
                 }
             </ul>
-        </div>
+        </article>
     )
 }
 

@@ -88,11 +88,12 @@ const {employees,isModalOpened,updatedAndDeletedEmployees,deleteEmployee,showMod
                         }
                     </tbody>
                 </table>
-                {
-                    isSearched ? null :<Pagination employeesPerPage={employeesPerPage} employees={employees} currentPage={currentPage} paginate={paginate}/> 
-                }
+              
                 
             </article>
+            {
+                    isSearched ? null :<Pagination employeesPerPage={employeesPerPage} employees={employees} currentPage={currentPage} paginate={paginate}/> 
+                }
             <article className="btns-container">
                 {/* <form action='#' onSubmit={handleSubmit}> */}
                     <button type='button' onClick={showModal}>Submit data</button>
