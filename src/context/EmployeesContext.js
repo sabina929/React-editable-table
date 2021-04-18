@@ -78,7 +78,9 @@ const EmployeesContextProvider = (props) => {
 
       const textRegex = /([0-9-!$@#%^&*()_+|~=`{}\[\]:";'<>?,.\\\/])+/ig// eslint-disable-line
       const positionTextRegex = /([0-9!$@#%^*_+~=`\[\]";'<>?.])+/ig// eslint-disable-line
-      const phoneRegex = /^(\+|\d)[0-9]{7,16}$/
+      // const phoneRegex = /^(\+|\d)[0-9]{7,16}$/
+      const phoneRegex = /^\+(?:[0-9] ?){7,15}[0-9]$/;
+      // const  dateOfBirthRegex = /\s+|[\/-]/g// eslint-disable-line
     
   
       let editedEmployees = copyOfEmployeesArr.map(employee=> {
@@ -166,6 +168,7 @@ const EmployeesContextProvider = (props) => {
     };
     // GET SEARCH RESULT
     const getSearchResult = useCallback(() => {
+      const  dateOfBirthRegex = /\s+|[\/-]/g// eslint-disable-line
       let results = []
       let copyOfEmployeesArr = employees.slice();
       if(searchTerm === ''|| searchTerm === null || searchTerm === ' '){
@@ -174,7 +177,7 @@ const EmployeesContextProvider = (props) => {
       }
       else{
         results = copyOfEmployeesArr.filter(employee => 
-          employee.name.toLowerCase().includes(searchTerm.toLowerCase()) || employee.surname.toLowerCase().includes(searchTerm.toLowerCase()) || employee.id.toLowerCase().includes(searchTerm.toLowerCase()) || employee.dateOfBirth.includes(searchTerm) || employee.position.toLowerCase().includes(searchTerm.toLowerCase()) || employee.phoneNumber.includes(searchTerm)
+          employee.name.toLowerCase().includes(searchTerm.toLowerCase()) || employee.surname.toLowerCase().includes(searchTerm.toLowerCase()) || employee.id.toLowerCase().includes(searchTerm.toLowerCase()) || employee.dateOfBirth.replace(dateOfBirthRegex, '').includes(searchTerm.replace(dateOfBirthRegex, '')) || employee.position.toLowerCase().includes(searchTerm.toLowerCase()) || employee.phoneNumber.replace(/\s+/g, '').includes(searchTerm.replace(/\s+/g, ''))
           )
           setIsSearched(true)
           setCurrentEmployees(results);
