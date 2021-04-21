@@ -8,7 +8,6 @@ const DeletedEmployeesList = () => {
             <section className='list-container'>
                 <h1>Deleted employees</h1>
                 <article>
-
                     {
                         deletedEmployees.length === 0 ? <p>Nothing here...</p> :  deletedEmployees.map(deletedEmployee =>{
                             const {id, name, surname, dateOfBirth, position, phoneNumber, inputId} = deletedEmployee

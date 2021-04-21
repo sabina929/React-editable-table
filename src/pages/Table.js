@@ -103,9 +103,9 @@ const {employees,isModalOpened,updatedAndDeletedEmployees,deleteEmployee,showMod
             
         </section>
 
-            {
-                isModalOpened &&  <EmpoleyeesDataModal updatedAndDeletedEmployees={updatedAndDeletedEmployees} showModal={showModal}/>
-            }
+        {
+            isModalOpened &&  <EmpoleyeesDataModal updatedAndDeletedEmployees={updatedAndDeletedEmployees} showModal={showModal}/>
+        }
    
     </main>
     )

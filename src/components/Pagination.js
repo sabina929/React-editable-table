@@ -2,8 +2,8 @@ import React from 'react'
 
 const Pagination = ({employeesPerPage, employees, currentPage, paginate}) => {
     const pageNumbers = [];
-    const totalBooks = employees.length;
-    for (let i = 1; i <= Math.ceil(totalBooks / employeesPerPage); i++) {
+    const totalEmployees = employees.length;
+    for (let i = 1; i <= Math.ceil(totalEmployees / employeesPerPage); i++) {
           pageNumbers.push(i);
     }
 
